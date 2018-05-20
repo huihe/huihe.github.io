@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES | Beyond the Clouds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Error4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run flow check 1234567891011121314151617&amp;gt; flow checkinternal/child_process.js:315    throw errnoExcepti">
+<meta name="keywords" content="
+- code
+- npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES">
+<meta property="og:url" content="http://yoursite.com/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/index.html">
+<meta property="og:site_name" content="Beyond the Clouds">
+<meta property="og:description" content="Error4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run flow check 1234567891011121314151617&amp;gt; flow checkinternal/child_process.js:315    throw errnoExcepti">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-04T02:25:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES">
+<meta name="twitter:description" content="Error4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run flow check 1234567891011121314151617&amp;gt; flow checkinternal/child_process.js:315    throw errnoExcepti">
+  
+    <link rel="alternate" href="/atom.xml" title="Beyond the Clouds" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Beyond the Clouds</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A developer&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" class="article-date">
+  <time datetime="2017-09-04T01:48:29.000Z" itemprop="datePublished">2017-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run <strong>flow check</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; flow check</span><br><span class="line"></span><br><span class="line">internal/child_process.js:315</span><br><span class="line">    throw errnoException(err, &apos;spawn&apos;);</span><br><span class="line">    ^</span><br><span class="line"> </span><br><span class="line">Error: spawn EACCES</span><br><span class="line">    at exports._errnoException (util.js:907:11)</span><br><span class="line">    at ChildProcess.spawn (internal/child_process.js:315:11)</span><br><span class="line">    at exports.spawn (child_process.js:365:9)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/opt/app/node_modules/flow-bin/cli.js:17:3)</span><br><span class="line">    at Module._compile (module.js:409:26)</span><br><span class="line">    at Object.Module._extensions..js (module.js:416:10)</span><br><span class="line">    at Module.load (module.js:343:32)</span><br><span class="line">    at Function.Module._load (module.js:300:12)</span><br><span class="line">    at Function.Module.runMain (module.js:441:10)</span><br><span class="line">    at startup (node.js:140:18)</span><br></pre></td></tr></table></figure>
+<h4 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h4><p>First thought it was a flow error of latest version. Downgrade ‘flow-bin’ to previous version didn’t work. It was actually caused by ‘spawn’ calling files with incorrect permissions. <code>internal/child_process.js:315 throw errnoException(err, &#39;spawn&#39;);</code><br>NPM v5.4.0 removes executable(+x) permission during installing packages.</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>fix npm to v5.3.0 works <code>npm install npm@5.3.0</code></p>
+<hr>
+<p>It’s still an open issue in NPM when I wrote this.<br><a href="https://github.com/npm/npm/issues/18324" target="_blank" rel="noopener">https://github.com/npm/npm/issues/18324</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="cjheth7ye0006wynoj7aruhim" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code-npm/">
+- code
+- npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/19/promise-coroutine/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Promise.coroutine</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">
+- code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-aws/">
+- code
+- aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-github/">
+- code
+- github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-node-js-coroutine-async/">
+- code
+- node.js
+- coroutine
+- async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-npm/">
+- code
+- npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-mocha-code/">
+- js
+- mocha
+- code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">
+- mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">
+- music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music-清白之年-朴树-高晓松-歌词/">
+- music
+- 清白之年
+- 朴树
+- 高晓松
+- 歌词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">
+- web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/code/" style="font-size: 16.67px;">
+- code</a> <a href="/tags/code-aws/" style="font-size: 13.33px;">
+- code
+- aws</a> <a href="/tags/code-github/" style="font-size: 10px;">
+- code
+- github</a> <a href="/tags/code-node-js-coroutine-async/" style="font-size: 10px;">
+- code
+- node.js
+- coroutine
+- async</a> <a href="/tags/code-npm/" style="font-size: 10px;">
+- code
+- npm</a> <a href="/tags/js-mocha-code/" style="font-size: 10px;">
+- js
+- mocha
+- code</a> <a href="/tags/mac/" style="font-size: 10px;">
+- mac</a> <a href="/tags/music/" style="font-size: 20px;">
+- music</a> <a href="/tags/music-清白之年-朴树-高晓松-歌词/" style="font-size: 10px;">
+- music
+- 清白之年
+- 朴树
+- 高晓松
+- 歌词</a> <a href="/tags/web/" style="font-size: 10px;">
+- web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/">Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/19/promise-coroutine/">Promise.coroutine</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/wu-lan-ba-tuo-de-ye/">乌兰巴托的夜</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/qing-bai-zhi-nian/">清白之年</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/use-codeowners-to-receive-code-review-automatically/">Use CODEOWNERS to receive code review automatically</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Hui He<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
