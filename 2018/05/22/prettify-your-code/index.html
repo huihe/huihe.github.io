@@ -18,16 +18,24 @@ ga('send', 'pageview');
 
 
   
-  <title>Archives: 2017/7 | Beyond the Clouds</title>
+  <title>prettify-your-code | Beyond the Clouds</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="blog programming developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Beyond the Clouds">
-<meta property="og:url" content="https://huihe.github.io/archives/2017/07/index.html">
+  <meta name="description" content="Use prettier to format your code, automatically, for all your teamAs a developer, I highly recommend to use prettier in your editor. And today I’d like to go a step further, force and automate code fo">
+<meta name="keywords" content="
+- code
+- prettier">
+<meta property="og:type" content="article">
+<meta property="og:title" content="prettify-your-code">
+<meta property="og:url" content="https://huihe.github.io/2018/05/22/prettify-your-code/index.html">
 <meta property="og:site_name" content="Beyond the Clouds">
+<meta property="og:description" content="Use prettier to format your code, automatically, for all your teamAs a developer, I highly recommend to use prettier in your editor. And today I’d like to go a step further, force and automate code fo">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif">
+<meta property="og:updated_time" content="2018-05-22T13:04:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beyond the Clouds">
+<meta name="twitter:title" content="prettify-your-code">
+<meta name="twitter:description" content="Use prettier to format your code, automatically, for all your teamAs a developer, I highly recommend to use prettier in your editor. And today I’d like to go a step further, force and automate code fo">
+<meta name="twitter:image" content="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif">
   
     <link rel="alternate" href="/atom.xml" title="Beyond the Clouds" type="application/atom+xml">
   
@@ -78,97 +86,69 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/19/promise-coroutine/" class="archive-article-date">
-  <time datetime="2017-07-18T16:41:40.000Z" itemprop="datePublished">Jul 19</time>
+        <section id="main"><article id="post-prettify-your-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/prettify-your-code/" class="article-date">
+  <time datetime="2018-05-22T12:19:33.000Z" itemprop="datePublished">2018-05-22</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/19/promise-coroutine/">Promise.coroutine</a>
+    <h1 class="article-title" itemprop="name">
+      prettify-your-code
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/15/wu-lan-ba-tuo-de-ye/" class="archive-article-date">
-  <time datetime="2017-07-14T18:27:23.000Z" itemprop="datePublished">Jul 15</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/wu-lan-ba-tuo-de-ye/">乌兰巴托的夜</a>
-    </h1>
-  
+        <h3 id="Use-prettier-to-format-your-code-automatically-for-all-your-team"><a href="#Use-prettier-to-format-your-code-automatically-for-all-your-team" class="headerlink" title="Use prettier to format your code, automatically, for all your team"></a>Use prettier to format your code, automatically, for all your team</h3><p>As a developer, I highly recommend to use <a href="https://prettier.io/" target="_blank" rel="noopener">prettier</a> in your editor. And today I’d like to go a step further, force and automate code formatting for all your team. No need to discuss the code style any more, don’t waste time on the arguments about space or tab, whether or not add a new line. And it’s much neat for code diff and review.</p>
+<p>It’s very easy, only 2 steps.</p>
+<ol>
+<li>Install <em>pretty-quick</em> and <em>husky</em>. pretty-quick runs prettier on your changed files and husky gives the hook for precommit.</li>
+</ol>
+<blockquote>
+<p>yarn add pretty-quick husky –dev</p>
+</blockquote>
+<ol start="2">
+<li>add this script to your package.json:</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="attr">  "scripts":</span> <span class="string">&#123;</span></span><br><span class="line"><span class="attr">    "precommit":</span> <span class="string">"pretty-quick --staged"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Now every time when any team member commit, the changed files will be prettified.</p>
+<p><img src="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif" alt="demo"></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/15/qing-bai-zhi-nian/" class="archive-article-date">
-  <time datetime="2017-07-14T16:14:24.000Z" itemprop="datePublished">Jul 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/qing-bai-zhi-nian/">清白之年</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/13/use-codeowners-to-receive-code-review-automatically/" class="archive-article-date">
-  <time datetime="2017-07-12T17:04:43.000Z" itemprop="datePublished">Jul 13</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="cjhhoz3w2000qgbnolwg64ymf" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/13/use-codeowners-to-receive-code-review-automatically/">Use CODEOWNERS to receive code review automatically</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code-prettier/">
+- code
+- prettier</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
