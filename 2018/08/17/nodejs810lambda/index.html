@@ -28,7 +28,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Twinkle Twinkle Little Star">
 <meta property="og:description" content="In AWS lambda, using node.js before runtime 8.10, although you can use promise across all your code, but in top handler, you must follow this callback pattern. async/await is not supported in handler,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T05:34:19.000Z">
+<meta property="og:updated_time" content="2018-08-17T05:37:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 8.10 available in AWS lambda">
 <meta name="twitter:description" content="In AWS lambda, using node.js before runtime 8.10, although you can use promise across all your code, but in top handler, you must follow this callback pattern. async/await is not supported in handler,">
@@ -121,10 +121,7 @@ ga('send', 'pageview');
 <li>for sync value, you need to wrap it in promise:</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">'ok'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Ref:</p>
-<blockquote>
-<p><a href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
-</blockquote>
+<p>Ref:<br><a href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
 
       
     </div>

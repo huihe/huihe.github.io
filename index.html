@@ -119,10 +119,7 @@ ga('send', 'pageview');
 <li>for sync value, you need to wrap it in promise:</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">'ok'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Ref:</p>
-<blockquote>
-<p><a href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
-</blockquote>
+<p>Ref:<br><a href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
 
       
     </div>
