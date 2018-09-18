@@ -18,20 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>Promise.coroutine | Twinkling Little Star</title>
+  <title>aws sts assume-role | Twinkling Little Star</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Promise.coroutine(GeneratorFunction(…arguments) generatorFunction, Object options) -&amp;gt; function When called, the coroutine function will start an instance of the generator and returns a promise for">
-<meta name="keywords" content="code,async,node,coroutine">
+  <meta name="description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
+<meta name="keywords" content="aws">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Promise.coroutine">
-<meta property="og:url" content="https://huihe.github.io/2017/07/19/promise-coroutine/index.html">
+<meta property="og:title" content="aws sts assume-role">
+<meta property="og:url" content="https://huihe.github.io/2018/09/18/assume-role/index.html">
 <meta property="og:site_name" content="Twinkling Little Star">
-<meta property="og:description" content="Promise.coroutine(GeneratorFunction(…arguments) generatorFunction, Object options) -&amp;gt; function When called, the coroutine function will start an instance of the generator and returns a promise for">
+<meta property="og:description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2017-07-18T16:45:11.000Z">
+<meta property="og:updated_time" content="2018-09-18T05:09:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Promise.coroutine">
-<meta name="twitter:description" content="Promise.coroutine(GeneratorFunction(…arguments) generatorFunction, Object options) -&amp;gt; function When called, the coroutine function will start an instance of the generator and returns a promise for">
+<meta name="twitter:title" content="aws sts assume-role">
+<meta name="twitter:description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
   
     <link rel="alternate" href="/atom.xml" title="Twinkling Little Star" type="application/atom+xml">
   
@@ -82,10 +82,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-promise-coroutine" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-assume-role" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/19/promise-coroutine/" class="article-date">
-  <time datetime="2017-07-18T16:41:40.000Z" itemprop="datePublished">2017-07-19</time>
+    <a href="/2018/09/18/assume-role/" class="article-date">
+  <time datetime="2018-09-18T04:54:50.000Z" itemprop="datePublished">2018-09-18</time>
 </a>
     
   </div>
@@ -96,7 +96,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Promise.coroutine
+      aws sts assume-role
     </h1>
   
 
@@ -104,21 +104,24 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Promise.coroutine(GeneratorFunction(…arguments) generatorFunction, Object options) -&gt; function</p>
-<p>When called, the coroutine function will start an instance of the generator and returns a promise for its final value.</p>
-<p>Doing Promise.coroutine is almost like using the C# <strong>async</strong> keyword to mark the function, with yield working as the <strong>await</strong> keyword. Promises are somewhat like Tasks.</p>
-<blockquote>
-<p>The async/await key words are already available in es2017 and node 8.</p>
-</blockquote>
-<p>Reference<br><a href="http://bluebirdjs.com/docs/api/promise.coroutine.html" target="_blank" rel="noopener">http://bluebirdjs.com/docs/api/promise.coroutine.html</a></p>
+        <p><code>aws sts assume-role</code> is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment.</p>
+<p>To assume a role, your AWS account must be trusted by the role. The trust relationship is defined in the role’s trust policy when the role is created. That trust policy states which accounts are allowed to delegate access to this account’s role.</p>
+<p>By default, the temporary security credentials created by AssumeRole last for one hour. However, you can use the optional DurationSeconds parameter to specify the duration of your session. You can provide a value from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours.</p>
+<p>To assume a role:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example</span><br></pre></td></tr></table></figure>
+<p>The output of the command contains an access key, secret key, and session token that you can use to authenticate to AWS:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"AssumedRoleUser"</span>: &#123;</span><br><span class="line">        <span class="attr">"AssumedRoleId"</span>: <span class="string">"AROA3XFRBF535PLBIFPI4:s3-access-example"</span>,</span><br><span class="line">        <span class="attr">"Arn"</span>: <span class="string">"arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"Credentials"</span>: &#123;</span><br><span class="line">        <span class="attr">"SecretAccessKey"</span>: <span class="string">"9drTJvcXLB89EXAMPLELB8923FB892xMFI"</span>,</span><br><span class="line">        <span class="attr">"SessionToken"</span>: <span class="string">"AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU="</span>,</span><br><span class="line">        <span class="attr">"Expiration"</span>: <span class="string">"2016-03-15T00:05:07Z"</span>,</span><br><span class="line">        <span class="attr">"AccessKeyId"</span>: <span class="string">"ASIAJEXAMPLEXEG2JICEA"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Used in build bash scripts:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">"<span class="variable">$1</span>"</span> --role-session-name your-session-name --output text --query <span class="string">'Credentials | join(``, [`"export AWS_ACCESS_KEY_ID="`,AccessKeyId,`" AWS_SECRET_ACCESS_KEY="`,SecretAccessKey,`" AWS_SESSION_TOKEN="`,SessionToken,`\n`])'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">"<span class="variable">$ASSUME_ROLE</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/19/promise-coroutine/" data-id="cjm79eit6000d7onox30f9ktd" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="cjm79eit8000g7ono28xqtmi7" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/async/">async</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
 
     </footer>
   </div>
@@ -126,19 +129,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/15/wu-lan-ba-tuo-de-ye/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/20/sketchapp/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">乌兰巴托的夜</div>
+      <div class="article-nav-title">sketchapp</div>
     </a>
   
 </nav>

@@ -80,6 +80,54 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-assume-role" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/18/assume-role/" class="article-date">
+  <time datetime="2018-09-18T04:54:50.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/assume-role/">aws sts assume-role</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>aws sts assume-role</code> is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment.</p>
+<p>To assume a role, your AWS account must be trusted by the role. The trust relationship is defined in the role’s trust policy when the role is created. That trust policy states which accounts are allowed to delegate access to this account’s role.</p>
+<p>By default, the temporary security credentials created by AssumeRole last for one hour. However, you can use the optional DurationSeconds parameter to specify the duration of your session. You can provide a value from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours.</p>
+<p>To assume a role:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example</span><br></pre></td></tr></table></figure>
+<p>The output of the command contains an access key, secret key, and session token that you can use to authenticate to AWS:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"AssumedRoleUser"</span>: &#123;</span><br><span class="line">        <span class="attr">"AssumedRoleId"</span>: <span class="string">"AROA3XFRBF535PLBIFPI4:s3-access-example"</span>,</span><br><span class="line">        <span class="attr">"Arn"</span>: <span class="string">"arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"Credentials"</span>: &#123;</span><br><span class="line">        <span class="attr">"SecretAccessKey"</span>: <span class="string">"9drTJvcXLB89EXAMPLELB8923FB892xMFI"</span>,</span><br><span class="line">        <span class="attr">"SessionToken"</span>: <span class="string">"AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU="</span>,</span><br><span class="line">        <span class="attr">"Expiration"</span>: <span class="string">"2016-03-15T00:05:07Z"</span>,</span><br><span class="line">        <span class="attr">"AccessKeyId"</span>: <span class="string">"ASIAJEXAMPLEXEG2JICEA"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Used in build bash scripts:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">"<span class="variable">$1</span>"</span> --role-session-name your-session-name --output text --query <span class="string">'Credentials | join(``, [`"export AWS_ACCESS_KEY_ID="`,AccessKeyId,`" AWS_SECRET_ACCESS_KEY="`,SecretAccessKey,`" AWS_SESSION_TOKEN="`,SessionToken,`\n`])'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">"<span class="variable">$ASSUME_ROLE</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="cjm79eit8000g7ono28xqtmi7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sketchapp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/20/sketchapp/" class="article-date">
@@ -108,7 +156,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/20/sketchapp/" data-id="cjl1pe7kj000uslnokl591jrz" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/20/sketchapp/" data-id="cjm79eitm00127onohwatehl9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
@@ -156,7 +204,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/17/nodejs810lambda/" data-id="cjl1pe7kn000zslnord1lh8py" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/17/nodejs810lambda/" data-id="cjm79eitg000u7onog32vl9lo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -196,7 +244,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/17/cloudcraft/" data-id="cjl1pe7k9000islno5yuk8cqc" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/17/cloudcraft/" data-id="cjm79eite000r7onoiotrte1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
@@ -235,7 +283,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/06/14/composition/" data-id="cjl1pe7kf000nslnout4aga8q" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/06/14/composition/" data-id="cjm79eith000w7onoesiubz0i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
@@ -275,7 +323,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/26/ukulee-billie-jean/" data-id="cjl1pe7kp0011slno58051bgy" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/26/ukulee-billie-jean/" data-id="cjm79eitn00147onou6z3kkoq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
@@ -325,7 +373,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="cjl1pe7kl000wslnoqyqo5eiy" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="cjm79eitl000x7onowmwxqbr3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
@@ -373,7 +421,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/20/migrate-ghost-to-hexo/" data-id="cjl1pe7kh000rslno71lngl0f" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/20/migrate-ghost-to-hexo/" data-id="cjm79eitf000t7onocf4i1l1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -417,7 +465,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="cjl1pe7ju0004slnovdxdfrnv" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="cjm79eit000067ono2tktn9df" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
@@ -462,50 +510,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/19/promise-coroutine/" data-id="cjl1pe7k6000gslnobd2pgl8c" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/07/19/promise-coroutine/" data-id="cjm79eit6000d7onox30f9ktd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/async/">async</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-wu-lan-ba-tuo-de-ye" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/15/wu-lan-ba-tuo-de-ye/" class="article-date">
-  <time datetime="2017-07-14T18:27:23.000Z" itemprop="datePublished">2017-07-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/15/wu-lan-ba-tuo-de-ye/">乌兰巴托的夜</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em>Улаанбаатарын удэш 乌兰巴托原称库伦，是蒙古的首都，意为“红色英雄”。歌曲创作于1985年，由蒙古诗人桑堆扎布（P.Sanduyjav）作词，普勒布道尔吉（G.Pürevdorj）作曲。</em></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j0Dz3y-YN0M" frameborder="0" allowfullscreen></iframe>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/15/wu-lan-ba-tuo-de-ye/" data-id="cjl1pe7kt0019slnocmgdr4cm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
 
     </footer>
   </div>
@@ -542,7 +550,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 12.5px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
+      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
     </div>
   </div>
 
@@ -551,7 +559,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -562,6 +570,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/18/assume-role/">aws sts assume-role</a>
+          </li>
         
           <li>
             <a href="/2018/08/20/sketchapp/">sketchapp</a>
@@ -577,10 +589,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/06/14/composition/">FP in js</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/26/ukulee-billie-jean/">Ukulele &#39;Billie Jean&#39; from James Hill</a>
           </li>
         
       </ul>
