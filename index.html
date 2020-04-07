@@ -80,79 +80,6 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-setTimeout-in-lambda" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/05/setTimeout-in-lambda/" class="article-date">
-  <time datetime="2018-11-05T05:03:18.000Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/05/setTimeout-in-lambda/">setTimeout in aws lambda</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> slowMethod = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"setTimeout callback was called after 5 seconds."</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line"></span><br><span class="line">  slowMethod();</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"end"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">"lambda end"</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><ol>
-<li>local run with setTimeout<blockquote>
-<p>start<br>end<br>Promise delay was called after 5 seconds.</p>
-</blockquote>
-</li>
-</ol>
-<p>slowMethod will print out after 5 seconds.</p>
-<ol start="2">
-<li>run on aws lambda with setTimeout<br>First time run, Lambda just ended the handler function without printing “setTimeout callback was called after 5 seconds.”.<br>Second run, It prints “setTimeout callback was called after 5 seconds.” first and then the other ones!</li>
-</ol>
-<p>05:05:00<br>START RequestId: 58a3472a-e0b8-11e8-8559-17192896f1c6 Version: $LATEST<br><br>05:05:00<br>2018-11-05T05:05:00.482Z    58a3472a-e0b8-11e8-8559-17192896f1c6    start<br><br>05:05:00<br>2018-11-05T05:05:00.484Z    58a3472a-e0b8-11e8-8559-17192896f1c6    end<br><br>05:05:00<br>END RequestId: 58a3472a-e0b8-11e8-8559-17192896f1c6<br><br>05:05:00<br>REPORT RequestId: 58a3472a-e0b8-11e8-8559-17192896f1c6    Duration: 5.72 ms    Billed Duration: 100 ms Memory Size: 1024 MB    Max Memory Used: 49 MB<br><br>05:06:17<br>START RequestId: 86f9763f-e0b8-11e8-9200-4b9da457c7b4 Version: $LATEST<br><br>05:06:17<br>2018-11-05T05:06:17.818Z    58a3472a-e0b8-11e8-8559-17192896f1c6    setTimeout callback was called after 5 seconds.<br><br>05:06:17<br>2018-11-05T05:06:17.832Z    86f9763f-e0b8-11e8-9200-4b9da457c7b4    start<br><br>05:06:17<br>2018-11-05T05:06:17.832Z    86f9763f-e0b8-11e8-9200-4b9da457c7b4    end<br><br>05:06:17<br>END RequestId: 86f9763f-e0b8-11e8-9200-4b9da457c7b4<br><br>05:06:17<br>REPORT RequestId: 86f9763f-e0b8-11e8-9200-4b9da457c7b4    Duration: 13.69 ms    Billed Duration: 100 ms Memory Size: 1024 MB    Max Memory Used: 49 MB</p>
-<ol start="3">
-<li>add await before slowMethod which uses setTimeout<br>no difference</li>
-</ol>
-<h3 id="Promise-delay"><a href="#Promise-delay" class="headerlink" title="Promise.delay"></a>Promise.delay</h3><ol start="4">
-<li><p>change setTimeout to Promise.delay(5000)<br>same as setTimeout</p>
-</li>
-<li><p>add await before slowMethod<br>out put is below, same on local and aws lambda. The duration is 5008ms</p>
-</li>
-</ol>
-<blockquote>
-<p>start<br>Promise delay was called after 5 seconds.<br>end</p>
-</blockquote>
-<h3 id="Slow-http-request"><a href="#Slow-http-request" class="headerlink" title="Slow http request"></a>Slow http request</h3><ol>
-<li><p>call a slow api with await<br>Same as 4 above, await the api to complete.<br>The lmabda will wait and billed duration time is the real time(5.2s).</p>
-</li>
-<li><p>call a slow api without await<br>The lambda doesn’t wait(100ms) and the api was not called.<br>no magic happen on the second call, not like case 2 above. Looks like the http request was killed.</p>
-</li>
-</ol>
-<p>2.1 remove async before handler will be similar like case 1, call api after log ‘end’, duration is &gt; 5 seconds.</p>
-<p>2.2 remove handler async make case 1 also changed the lambda to wait for slowMethod to finish in 5s.</p>
-<h3 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h3><p>Background processes or callbacks initiated by your Lambda function that did not complete when the function ended, will resume if AWS Lambda chooses to reuse the Execution Context.</p>
-<p>This statement is true for setTimeout, but not for http request.</p>
-<p><a href="https://medium.com/radient-tech-blog/aws-lambda-and-the-node-js-event-loop-864e48fba49" target="_blank" rel="noopener">https://medium.com/radient-tech-blog/aws-lambda-and-the-node-js-event-loop-864e48fba49</a><br><a href="https://forum.serverless.com/t/aws-lambda-unable-to-make-external-api-call/4556/4" target="_blank" rel="noopener">https://forum.serverless.com/t/aws-lambda-unable-to-make-external-api-call/4556/4</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/11/05/setTimeout-in-lambda/" data-id="ck8psthb900127jno4z2q3rrh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-lambda-15min" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/12/lambda-15min/" class="article-date">
@@ -549,6 +476,50 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" class="article-date">
+  <time datetime="2017-09-04T01:48:29.000Z" itemprop="datePublished">2017-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/">Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run <strong>flow check</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; flow check</span><br><span class="line"></span><br><span class="line">internal/child_process.js:315</span><br><span class="line">    throw errnoException(err, &apos;spawn&apos;);</span><br><span class="line">    ^</span><br><span class="line"> </span><br><span class="line">Error: spawn EACCES</span><br><span class="line">    at exports._errnoException (util.js:907:11)</span><br><span class="line">    at ChildProcess.spawn (internal/child_process.js:315:11)</span><br><span class="line">    at exports.spawn (child_process.js:365:9)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/opt/app/node_modules/flow-bin/cli.js:17:3)</span><br><span class="line">    at Module._compile (module.js:409:26)</span><br><span class="line">    at Object.Module._extensions..js (module.js:416:10)</span><br><span class="line">    at Module.load (module.js:343:32)</span><br><span class="line">    at Function.Module._load (module.js:300:12)</span><br><span class="line">    at Function.Module.runMain (module.js:441:10)</span><br><span class="line">    at startup (node.js:140:18)</span><br></pre></td></tr></table></figure>
+<h4 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h4><p>First thought it was a flow error of latest version. Downgrade ‘flow-bin’ to previous version didn’t work. It was actually caused by ‘spawn’ calling files with incorrect permissions. <code>internal/child_process.js:315 throw errnoException(err, &#39;spawn&#39;);</code><br>NPM v5.4.0 removes executable(+x) permission during installing packages.</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>fix npm to v5.3.0 works <code>npm install npm@5.3.0</code></p>
+<hr>
+<p>It’s still an open issue in NPM when I wrote this.<br><a href="https://github.com/npm/npm/issues/18324" target="_blank" rel="noopener">https://github.com/npm/npm/issues/18324</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="ck8psthan00057jnocxvnqgnd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -567,7 +538,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
     </div>
   </div>
 
@@ -577,7 +548,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/async/" style="font-size: 14px;">async</a> <a href="/tags/aws/" style="font-size: 16px;">aws</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 14px;">js</a> <a href="/tags/lambda/" style="font-size: 14px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 18px;">music</a> <a href="/tags/node/" style="font-size: 12px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12px;">tool</a>
+      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
     </div>
   </div>
 
@@ -586,7 +557,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -597,10 +568,6 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2018/11/05/setTimeout-in-lambda/">setTimeout in aws lambda</a>
-          </li>
         
           <li>
             <a href="/2018/10/12/lambda-15min/">lambda-15min</a>
@@ -616,6 +583,10 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/08/17/nodejs810lambda/">Use async or Promise in AWS lambda handler</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/17/cloudcraft/">A good online tool to draw your cloud architecture</a>
           </li>
         
       </ul>
