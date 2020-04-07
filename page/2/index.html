@@ -18,18 +18,18 @@ ga('send', 'pageview');
 
 
   
-  <title>Twinkling Little Star</title>
+  <title>Starry Starry Night</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="blog programming developer">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Twinkling Little Star">
+<meta property="og:title" content="Starry Starry Night">
 <meta property="og:url" content="https://huihe.github.io/page/2/index.html">
-<meta property="og:site_name" content="Twinkling Little Star">
+<meta property="og:site_name" content="Starry Starry Night">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Twinkling Little Star">
+<meta name="twitter:title" content="Starry Starry Night">
   
-    <link rel="alternate" href="/atom.xml" title="Twinkling Little Star" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Starry Starry Night" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -48,7 +48,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Twinkling Little Star</a>
+        <a href="/" id="logo">Starry Starry Night</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -79,6 +79,50 @@ ga('send', 'pageview');
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" class="article-date">
+  <time datetime="2017-09-04T01:48:29.000Z" itemprop="datePublished">2017-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/">Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run <strong>flow check</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; flow check</span><br><span class="line"></span><br><span class="line">internal/child_process.js:315</span><br><span class="line">    throw errnoException(err, &apos;spawn&apos;);</span><br><span class="line">    ^</span><br><span class="line"> </span><br><span class="line">Error: spawn EACCES</span><br><span class="line">    at exports._errnoException (util.js:907:11)</span><br><span class="line">    at ChildProcess.spawn (internal/child_process.js:315:11)</span><br><span class="line">    at exports.spawn (child_process.js:365:9)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/opt/app/node_modules/flow-bin/cli.js:17:3)</span><br><span class="line">    at Module._compile (module.js:409:26)</span><br><span class="line">    at Object.Module._extensions..js (module.js:416:10)</span><br><span class="line">    at Module.load (module.js:343:32)</span><br><span class="line">    at Function.Module._load (module.js:300:12)</span><br><span class="line">    at Function.Module.runMain (module.js:441:10)</span><br><span class="line">    at startup (node.js:140:18)</span><br></pre></td></tr></table></figure>
+<h4 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h4><p>First thought it was a flow error of latest version. Downgrade ‘flow-bin’ to previous version didn’t work. It was actually caused by ‘spawn’ calling files with incorrect permissions. <code>internal/child_process.js:315 throw errnoException(err, &#39;spawn&#39;);</code><br>NPM v5.4.0 removes executable(+x) permission during installing packages.</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>fix npm to v5.3.0 works <code>npm install npm@5.3.0</code></p>
+<hr>
+<p>It’s still an open issue in NPM when I wrote this.<br><a href="https://github.com/npm/npm/issues/18324" target="_blank" rel="noopener">https://github.com/npm/npm/issues/18324</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="ck8psthan00057jnocxvnqgnd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-promise-coroutine" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -113,7 +157,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/19/promise-coroutine/" data-id="cjn568c5u000cauno2i6tjvye" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/07/19/promise-coroutine/" data-id="ck8psthaw000d7jnom7jj67fc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/async/">async</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -153,7 +197,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/15/wu-lan-ba-tuo-de-ye/" data-id="cjn568c6j0019auno9u3ky2ky" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/07/15/wu-lan-ba-tuo-de-ye/" data-id="ck8psthbf001h7jno2k4kgwln" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
@@ -203,7 +247,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/15/qing-bai-zhi-nian/" data-id="cjn568c6n001eaunoyo8ueoce" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/07/15/qing-bai-zhi-nian/" data-id="ck8psthbg001j7jnoxel28ram" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
@@ -247,7 +291,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/07/13/use-codeowners-to-receive-code-review-automatically/" data-id="cjn568c5z000gauno34i1a3pf" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/07/13/use-codeowners-to-receive-code-review-automatically/" data-id="ck8psthaz000i7jno8j48fc71" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -286,7 +330,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/03/17/post-beyond-the-cloud/" data-id="cjn568c5x000faunoe0wwrwvn" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/03/17/post-beyond-the-cloud/" data-id="ck8psthax000g7jnodf4ci2ht" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/">other</a></li></ul>
@@ -325,7 +369,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/03/11/one-of-my-faves/" data-id="cjn568c5q0009aunou7ko9ujh" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/03/11/one-of-my-faves/" data-id="ck8psthap00087jnoplbo0jrz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
@@ -365,7 +409,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/03/11/lanlianhua/" data-id="cjn568c6t001oaunog0oraggp" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/03/11/lanlianhua/" data-id="ck8psthbh001m7jnokr39r9iq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
@@ -421,7 +465,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/02/22/customize-aws-api-gateway-name-in-serverless-framework/" data-id="cjn568c5j0004aunovxmcbbpp" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/02/22/customize-aws-api-gateway-name-in-serverless-framework/" data-id="ck8psthaf00017jno011jnqve" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
@@ -460,56 +504,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/01/30/piper/" data-id="cjn568c5p0008auno11nlbeac" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2017/01/30/piper/" data-id="ck8psthaq00097jnoyt9m5evv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/09/xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra/" class="article-date">
-  <time datetime="2017-01-08T18:48:43.000Z" itemprop="datePublished">2017-01-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/09/xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra/">xcrun error invalid active developer path after upgrading to mac os sierra</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Error:</strong></p>
-<p>After upgrading to mac os Sierra, started getting the following error in terminal:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure>
-<p><strong>How to fix?</strong></p>
-<p>Run the following in terminal:</p>
-<p><code>xcode-select --install</code></p>
-<p><strong>Why?</strong></p>
-<p>The problem is git related. On Mac, git is attached to xcode’s command line tools. The above command will download and install xcode developer tools and fix the problem that is one needs to explicity agree to the license agreement.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/01/09/xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra/" data-id="cjn568c6k001bauno4yag3fja" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
 
     </footer>
   </div>
@@ -536,7 +534,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
     </div>
   </div>
 
@@ -546,7 +544,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
+      <a href="/tags/async/" style="font-size: 14px;">async</a> <a href="/tags/aws/" style="font-size: 16px;">aws</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 14px;">js</a> <a href="/tags/lambda/" style="font-size: 14px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 18px;">music</a> <a href="/tags/node/" style="font-size: 12px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12px;">tool</a>
     </div>
   </div>
 
@@ -555,7 +553,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -566,6 +564,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/05/setTimeout-in-lambda/">setTimeout in aws lambda</a>
+          </li>
         
           <li>
             <a href="/2018/10/12/lambda-15min/">lambda-15min</a>
@@ -583,10 +585,6 @@ ga('send', 'pageview');
             <a href="/2018/08/17/nodejs810lambda/">Use async or Promise in AWS lambda handler</a>
           </li>
         
-          <li>
-            <a href="/2018/08/17/cloudcraft/">A good online tool to draw your cloud architecture</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -599,7 +597,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Hui He<br>
+      &copy; 2020 Hui He<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
