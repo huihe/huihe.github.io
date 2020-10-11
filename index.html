@@ -18,18 +18,18 @@ ga('send', 'pageview');
 
 
   
-  <title>Starry Starry Night</title>
+  <title>Twinkle Little Stars</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="blog programming developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Starry Starry Night">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Twinkle Little Stars">
 <meta property="og:url" content="https://huihe.github.io/index.html">
-<meta property="og:site_name" content="Starry Starry Night">
-<meta property="og:locale" content="default">
+<meta property="og:site_name" content="Twinkle Little Stars">
+<meta property="og:locale">
+<meta property="article:author" content="Hui He">
+<meta property="article:tag" content="blog programming developer">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Starry Starry Night">
   
-    <link rel="alternate" href="/atom.xml" title="Starry Starry Night" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Twinkle Little Stars" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -37,8 +37,10 @@ ga('send', 'pageview');
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
   <div id="container">
@@ -48,12 +50,8 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Starry Starry Night</a>
+        <a href="/" id="logo">Twinkle Little Stars</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">A developer&#39;s blog</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -80,6 +78,56 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-memory-leak-in-node-v12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/11/memory-leak-in-node-v12/" class="article-date">
+  <time datetime="2020-10-11T03:57:04.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/11/memory-leak-in-node-v12/">Memory Leak in Node V12</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Found memory leak in node v12.14(not only this version), issues have already been fixed in v12.18.2.</p>
+<p>Release notes: 2020-06-30, Version 12.18.2</p>
+<ul>
+<li>deps: V8: backport fb26d0bb1835 (Matheus Marchini) #33573<ul>
+<li>Fixes memory leak in PrototypeUsers::Add</li>
+</ul>
+</li>
+<li>src: use symbol to store AsyncWrap resource (Anna Henningsen) #31745<ul>
+<li>Fixes reported memory leak in #33468</li>
+</ul>
+</li>
+</ul>
+<p>I reproduced this issue locally and here is the heap usage comparison for same code using different node versions.</p>
+<p><img src="/images/node-memory-leak.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2020/10/11/memory-leak-in-node-v12/" data-id="ckg4mcrrw000039nodgu6gzza" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-lambda-15min" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/12/lambda-15min/" class="article-date">
@@ -94,7 +142,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/12/lambda-15min/">lambda-15min</a>
+      <a class="article-title" href="/2018/10/12/lambda-15min/">Lambda-15min</a>
     </h1>
   
 
@@ -103,7 +151,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>AWS Lambda enables functions that can run up to 15 minutes. This feature is available in all Lambda regions.</p>
-<p><a href="https://aws.amazon.com/about-aws/whats-new/2018/10/aws-lambda-supports-functions-that-can-run-up-to-15-minutes/" target="_blank" rel="noopener">https://aws.amazon.com/about-aws/whats-new/2018/10/aws-lambda-supports-functions-that-can-run-up-to-15-minutes/</a></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/about-aws/whats-new/2018/10/aws-lambda-supports-functions-that-can-run-up-to-15-minutes/">https://aws.amazon.com/about-aws/whats-new/2018/10/aws-lambda-supports-functions-that-can-run-up-to-15-minutes/</a></p>
 <blockquote>
 <p>Just because you can doesn’t mean you should :)</p>
 </blockquote>
@@ -111,10 +159,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/10/12/lambda-15min/" data-id="ck8psthb6000u7jno5nt3w2xl" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/10/12/lambda-15min/" data-id="ckg4ltune000hvjno49e6c9pj" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/" rel="tag">lambda</a></li></ul>
 
     </footer>
   </div>
@@ -137,7 +185,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/18/assume-role/">aws sts assume-role</a>
+      <a class="article-title" href="/2018/09/18/assume-role/">Aws Sts Assume-Role</a>
     </h1>
   
 
@@ -151,18 +199,20 @@ ga('send', 'pageview');
 <p>To assume a role:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example</span><br></pre></td></tr></table></figure>
 <p>The output of the command contains an access key, secret key, and session token that you can use to authenticate to AWS:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"AssumedRoleUser"</span>: &#123;</span><br><span class="line">        <span class="attr">"AssumedRoleId"</span>: <span class="string">"AROA3XFRBF535PLBIFPI4:s3-access-example"</span>,</span><br><span class="line">        <span class="attr">"Arn"</span>: <span class="string">"arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"Credentials"</span>: &#123;</span><br><span class="line">        <span class="attr">"SecretAccessKey"</span>: <span class="string">"9drTJvcXLB89EXAMPLELB8923FB892xMFI"</span>,</span><br><span class="line">        <span class="attr">"SessionToken"</span>: <span class="string">"AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU="</span>,</span><br><span class="line">        <span class="attr">"Expiration"</span>: <span class="string">"2016-03-15T00:05:07Z"</span>,</span><br><span class="line">        <span class="attr">"AccessKeyId"</span>: <span class="string">"ASIAJEXAMPLEXEG2JICEA"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;AssumedRoleUser&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;AssumedRoleId&quot;</span>: <span class="string">&quot;AROA3XFRBF535PLBIFPI4:s3-access-example&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Arn&quot;</span>: <span class="string">&quot;arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;Credentials&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;SecretAccessKey&quot;</span>: <span class="string">&quot;9drTJvcXLB89EXAMPLELB8923FB892xMFI&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;SessionToken&quot;</span>: <span class="string">&quot;AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU=&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Expiration&quot;</span>: <span class="string">&quot;2016-03-15T00:05:07Z&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;AccessKeyId&quot;</span>: <span class="string">&quot;ASIAJEXAMPLEXEG2JICEA&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Used in build bash scripts:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">"<span class="variable">$1</span>"</span> --role-session-name your-session-name --output text --query <span class="string">'Credentials | join(``, [`"export AWS_ACCESS_KEY_ID="`,AccessKeyId,`" AWS_SECRET_ACCESS_KEY="`,SecretAccessKey,`" AWS_SESSION_TOKEN="`,SessionToken,`\n`])'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">"<span class="variable">$ASSUME_ROLE</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">&quot;<span class="variable">$1</span>&quot;</span> --role-session-name your-session-name --output text --query <span class="string">&#x27;Credentials | join(``, [`&quot;export AWS_ACCESS_KEY_ID=&quot;`,AccessKeyId,`&quot; AWS_SECRET_ACCESS_KEY=&quot;`,SecretAccessKey,`&quot; AWS_SESSION_TOKEN=&quot;`,SessionToken,`\n`])&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">&quot;<span class="variable">$ASSUME_ROLE</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="ck8psthb1000m7jnov7c3m30x" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="ckg4ltuna000dvjno2nkp9ymd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/" rel="tag">aws</a></li></ul>
 
     </footer>
   </div>
@@ -185,7 +235,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/20/sketchapp/">sketchapp</a>
+      <a class="article-title" href="/2018/08/20/sketchapp/">Sketchapp</a>
     </h1>
   
 
@@ -194,15 +244,15 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>UI design tools for designers and developers:</p>
-<p><a href="https://www.sketchapp.com/" target="_blank" rel="noopener">https://www.sketchapp.com/</a><br><a href="https://app.zeplin.io/" target="_blank" rel="noopener">https://app.zeplin.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sketchapp.com/">https://www.sketchapp.com/</a><br><a target="_blank" rel="noopener" href="https://app.zeplin.io/">https://app.zeplin.io/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/20/sketchapp/" data-id="ck8psthba00147jnoy381u6ql" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/20/sketchapp/" data-id="ckg4ltung000lvjno19lm98um" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
 
     </footer>
   </div>
@@ -225,7 +275,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/nodejs810lambda/">Use async or Promise in AWS lambda handler</a>
+      <a class="article-title" href="/2018/08/17/nodejs810lambda/">Use Async or Promise in AWS Lambda Handler</a>
     </h1>
   
 
@@ -234,23 +284,31 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>In AWS lambda, before node.js runtime 8.10, although you can use promise across all your code, but in top handler, you must follow the below <code>callback</code> pattern. async/await is not supported in handler, even in other functions you must use something like babel to transform your code before deploy.</p>
-<h3 id="Previous-callback-pattern"><a href="#Previous-callback-pattern" class="headerlink" title="Previous callback pattern"></a>Previous callback pattern</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">'something'</span>);</span><br><span class="line"></span><br><span class="line">exports.handler = <span class="function">(<span class="params">event, context, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> getSomthingPromise = api.getSomthing(event);</span><br><span class="line">  getSomthingPromise.then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      callback(<span class="literal">null</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">      callback(err);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Previous-callback-pattern"><a href="#Previous-callback-pattern" class="headerlink" title="Previous callback pattern"></a>Previous callback pattern</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">&#x27;something&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>.handler = <span class="function">(<span class="params">event, context, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> getSomthingPromise = api.getSomthing(event);</span><br><span class="line">  getSomthingPromise.then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      callback(<span class="literal">null</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">      callback(err);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>With the new Node.js 8.10, you can use promise or async/await pattern in handler, just like normal node.js function. And you don’t need to pass context and callback parameters, only event.</p>
-<h2 id="Use-async-await"><a href="#Use-async-await" class="headerlink" title="Use async/await"></a>Use async/await</h2><h4 id="for-sync-value-without-await"><a href="#for-sync-value-without-await" class="headerlink" title="for sync value without await:"></a>for sync value without await:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.handler = <span class="keyword">async</span> (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">'ok'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="for-async-value-with-await"><a href="#for-async-value-with-await" class="headerlink" title="for async value with await:"></a>for async value with await:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">'something'</span>);</span><br><span class="line"></span><br><span class="line">exports.handler = <span class="keyword">async</span> (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> api.getSomthing(event);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="built_in">JSON</span>.stringify(&#123; data &#125;)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Use-Promise"><a href="#Use-Promise" class="headerlink" title="Use Promise"></a>Use Promise</h2><h4 id="for-sync-value-wrap-in-Promise"><a href="#for-sync-value-wrap-in-Promise" class="headerlink" title="for sync value wrap in Promise:"></a>for sync value wrap in Promise:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">'ok'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="for-async"><a href="#for-async" class="headerlink" title="for async:"></a>for async:</h4><p>you can directly return it, but I don’t recommend this way<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">'something'</span>);</span><br><span class="line"></span><br><span class="line">exports.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> api.getSomthing(event);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>It’s better start from Promise.resolve():<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exports.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(event)</span><br><span class="line">    .then(api.getSomthing);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Use-async-await"><a href="#Use-async-await" class="headerlink" title="Use async/await"></a>Use async/await</h2><h4 id="for-sync-value-without-await"><a href="#for-sync-value-without-await" class="headerlink" title="for sync value without await:"></a>for sync value without await:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.handler = <span class="keyword">async</span> (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">&#x27;ok&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-async-value-with-await"><a href="#for-async-value-with-await" class="headerlink" title="for async value with await:"></a>for async value with await:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">&#x27;something&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>.handler = <span class="keyword">async</span> (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> api.getSomthing(event);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="built_in">JSON</span>.stringify(&#123; data &#125;)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Use-Promise"><a href="#Use-Promise" class="headerlink" title="Use Promise"></a>Use Promise</h2><h4 id="for-sync-value-wrap-in-Promise"><a href="#for-sync-value-wrap-in-Promise" class="headerlink" title="for sync value wrap in Promise:"></a>for sync value wrap in Promise:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">    statusCode: <span class="number">200</span>,</span><br><span class="line">    body: <span class="string">&#x27;ok&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-async"><a href="#for-async" class="headerlink" title="for async:"></a>for async:</h4><p>you can directly return it, but I don’t recommend this way</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">&#x27;something&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> api.getSomthing(event);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>It’s better start from Promise.resolve():</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.handler = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(event)</span><br><span class="line">    .then(api.getSomthing);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>To use async or Promise, it’s up to your choice. But I’m sure either way is easier than the previous callback pattern. Also to mention again, async/await is actually a syntactic sugar for promise in js.</p>
-<p>Ref:<br><a href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
+<p>Ref:<br><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/">https://aws.amazon.com/blogs/compute/node-js-8-10-runtime-now-available-in-aws-lambda/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/17/nodejs810lambda/" data-id="ck8psthb7000y7jnoj68wkbgp" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/17/nodejs810lambda/" data-id="ckg4ltunf000jvjnoe62kg0f4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/" rel="tag">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
 
     </footer>
   </div>
@@ -273,7 +331,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/cloudcraft/">A good online tool to draw your cloud architecture</a>
+      <a class="article-title" href="/2018/08/17/cloudcraft/">A Good Online Tool to Draw Your Cloud Architecture</a>
     </h1>
   
 
@@ -281,16 +339,16 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://cloudcraft.co/" target="_blank" rel="noopener">https://cloudcraft.co/</a></p>
+        <p><a target="_blank" rel="noopener" href="https://cloudcraft.co/">https://cloudcraft.co/</a></p>
 <p>You can draw 2D/3D architecture with heaps of aws icons and easily export to draw.io or just image.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/08/17/cloudcraft/" data-id="ck8psthb3000r7jnopw7r28u9" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/08/17/cloudcraft/" data-id="ckg4ltund000fvjnof0l31jle" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
 
     </footer>
   </div>
@@ -313,7 +371,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/14/composition/">FP in js</a>
+      <a class="article-title" href="/2018/06/14/composition/">FP in Js</a>
     </h1>
   
 
@@ -321,15 +379,15 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> composeFuncs = <span class="function">(<span class="params">...funcs</span>) =&gt;</span> (x) =&gt; funcs.reduce(<span class="function">(<span class="params">p, c</span>) =&gt;</span> p.then(c), <span class="built_in">Promise</span>.resolve(x));</span><br></pre></td></tr></table></figure>
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> composeFuncs = <span class="function">(<span class="params">...funcs</span>) =&gt;</span> <span class="function">(<span class="params">x</span>) =&gt;</span> funcs.reduce(<span class="function">(<span class="params">p, c</span>) =&gt;</span> p.then(c), <span class="built_in">Promise</span>.resolve(x));</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/06/14/composition/" data-id="ck8psthb5000t7jno7rl4gfi9" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/06/14/composition/" data-id="ckg4ltund000gvjno0rip3auh" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
 
     </footer>
   </div>
@@ -352,7 +410,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/26/ukulee-billie-jean/">Ukulele &#39;Billie Jean&#39; from James Hill</a>
+      <a class="article-title" href="/2018/05/26/ukulee-billie-jean/">Ukulele &#39;Billie Jean&#39; From James Hill</a>
     </h1>
   
 
@@ -366,10 +424,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/26/ukulee-billie-jean/" data-id="ck8psthbb00177jnojp5p6tqy" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/26/ukulee-billie-jean/" data-id="ckg4ltunh000mvjnoa5lb03u3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
 
     </footer>
   </div>
@@ -392,7 +450,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/prettify-your-code/">Use prettier to format your code, automatically, for all your team</a>
+      <a class="article-title" href="/2018/05/22/prettify-your-code/">Use Prettier to Format Your Code, Automatically, for All Your Team</a>
     </h1>
   
 
@@ -400,26 +458,28 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>As a developer, I highly recommend to use <a href="https://prettier.io/" target="_blank" rel="noopener">prettier</a> in your editor. And today I’d like to go a step further, force and automate code formatting for all your team. No need to discuss the code style any more, don’t waste time on the arguments about space or tab, whether or not add a new line. And it’s much neat for code diff and review.</p>
+        <p>As a developer, I highly recommend to use <a target="_blank" rel="noopener" href="https://prettier.io/">prettier</a> in your editor. And today I’d like to go a step further, force and automate code formatting for all your team. No need to discuss the code style any more, don’t waste time on the arguments about space or tab, whether or not add a new line. And it’s much neat for code diff and review.</p>
 <p>It’s very easy, only 2 steps.</p>
 <ol>
 <li>Install <em>pretty-quick</em> and <em>husky</em>. pretty-quick runs prettier on your changed files and husky gives the hook for precommit.</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add pretty-quick husky --dev</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>add this script to your package.json:</li>
 </ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="attr">  "scripts":</span> <span class="string">&#123;</span></span><br><span class="line"><span class="attr">    "precommit":</span> <span class="string">"pretty-quick --staged"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;:</span> &#123;</span><br><span class="line">    <span class="attr">&quot;precommit&quot;:</span> <span class="string">&quot;pretty-quick --staged&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Now every time when any team member commit, the changed files will be prettified.</p>
-<p><img src="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif" alt=""></p>
+<p><img src="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="ck8psthb8000z7jno0nsxcgkk" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="ckg4ltung000kvjno10rnajhe" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
 
     </footer>
   </div>
@@ -442,7 +502,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/20/migrate-ghost-to-hexo/">Migrate my blog from ghost to hexo</a>
+      <a class="article-title" href="/2018/05/20/migrate-ghost-to-hexo/">Migrate My Blog From Ghost to Hexo</a>
     </h1>
   
 
@@ -451,7 +511,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h3><p>Last time I updated my blog was about 10 months ago. My blog used to be hosted on my own linux vps. I setup the machine, nginx, nodejs, ghost and the blog. It was fun to put all those things together and enjoy my final product, my blog. But I’m not a real blogger. You see I haven’t update it for a long time. And I still have to pay for the vps, domain, and maintain the ‘system’, not the blog itself.</p>
-<p>Github pages is free to host static pages, also coming with a free domain name. And <a href="https://hexo.io/" target="_blank" rel="noopener">hexo</a> is easy to let you build your static blog. BTW, it’s on node.js :) It actually only spent me a short time to migrate my blog from my own vps to github.</p>
+<p>Github pages is free to host static pages, also coming with a free domain name. And <a target="_blank" rel="noopener" href="https://hexo.io/">hexo</a> is easy to let you build your static blog. BTW, it’s on node.js :) It actually only spent me a short time to migrate my blog from my own vps to github.</p>
 <h3 id="How"><a href="#How" class="headerlink" title="How"></a>How</h3><ul>
 <li>backup existing ghost data to json file</li>
 <li>install hexo local</li>
@@ -464,54 +524,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/05/20/migrate-ghost-to-hexo/" data-id="ck8psthb7000x7jnovenajgia" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/05/20/migrate-ghost-to-hexo/" data-id="ckg4ltunf000ivjnodiy21myo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" class="article-date">
-  <time datetime="2017-09-04T01:48:29.000Z" itemprop="datePublished">2017-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/">Issue in npm v5.4.0 which doesn&#39;t work with flow check - Error: spawn EACCES</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>4th Sep 2017, Monday. All our node.js builds failed with below error at the step when we run <strong>flow check</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; flow check</span><br><span class="line"></span><br><span class="line">internal/child_process.js:315</span><br><span class="line">    throw errnoException(err, &apos;spawn&apos;);</span><br><span class="line">    ^</span><br><span class="line"> </span><br><span class="line">Error: spawn EACCES</span><br><span class="line">    at exports._errnoException (util.js:907:11)</span><br><span class="line">    at ChildProcess.spawn (internal/child_process.js:315:11)</span><br><span class="line">    at exports.spawn (child_process.js:365:9)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/opt/app/node_modules/flow-bin/cli.js:17:3)</span><br><span class="line">    at Module._compile (module.js:409:26)</span><br><span class="line">    at Object.Module._extensions..js (module.js:416:10)</span><br><span class="line">    at Module.load (module.js:343:32)</span><br><span class="line">    at Function.Module._load (module.js:300:12)</span><br><span class="line">    at Function.Module.runMain (module.js:441:10)</span><br><span class="line">    at startup (node.js:140:18)</span><br></pre></td></tr></table></figure>
-<h4 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h4><p>First thought it was a flow error of latest version. Downgrade ‘flow-bin’ to previous version didn’t work. It was actually caused by ‘spawn’ calling files with incorrect permissions. <code>internal/child_process.js:315 throw errnoException(err, &#39;spawn&#39;);</code><br>NPM v5.4.0 removes executable(+x) permission during installing packages.</p>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>fix npm to v5.3.0 works <code>npm install npm@5.3.0</code></p>
-<hr>
-<p>It’s still an open issue in NPM when I wrote this.<br><a href="https://github.com/npm/npm/issues/18324" target="_blank" rel="noopener">https://github.com/npm/npm/issues/18324</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2017/09/04/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces/" data-id="ck8psthan00057jnocxvnqgnd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
 
     </footer>
   </div>
@@ -524,7 +540,7 @@ ga('send', 'pageview');
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -538,7 +554,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/" rel="tag">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/" rel="tag">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/" rel="tag">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/" rel="tag">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/" rel="tag">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
     </div>
   </div>
 
@@ -557,7 +573,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -570,23 +586,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2018/10/12/lambda-15min/">lambda-15min</a>
+            <a href="/2020/10/11/memory-leak-in-node-v12/">Memory Leak in Node V12</a>
           </li>
         
           <li>
-            <a href="/2018/09/18/assume-role/">aws sts assume-role</a>
+            <a href="/2018/10/12/lambda-15min/">Lambda-15min</a>
           </li>
         
           <li>
-            <a href="/2018/08/20/sketchapp/">sketchapp</a>
+            <a href="/2018/09/18/assume-role/">Aws Sts Assume-Role</a>
           </li>
         
           <li>
-            <a href="/2018/08/17/nodejs810lambda/">Use async or Promise in AWS lambda handler</a>
+            <a href="/2018/08/20/sketchapp/">Sketchapp</a>
           </li>
         
           <li>
-            <a href="/2018/08/17/cloudcraft/">A good online tool to draw your cloud architecture</a>
+            <a href="/2018/08/17/nodejs810lambda/">Use Async or Promise in AWS Lambda Handler</a>
           </li>
         
       </ul>
@@ -619,11 +635,17 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

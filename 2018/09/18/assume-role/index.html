@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>aws sts assume-role | Starry Starry Night</title>
+  <title>Aws Sts Assume-Role | Twinkle Little Stars</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
-<meta name="keywords" content="aws">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aws sts assume-role">
+<meta property="og:title" content="Aws Sts Assume-Role">
 <meta property="og:url" content="https://huihe.github.io/2018/09/18/assume-role/index.html">
-<meta property="og:site_name" content="Starry Starry Night">
+<meta property="og:site_name" content="Twinkle Little Stars">
 <meta property="og:description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-18T05:09:36.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-09-18T04:54:50.000Z">
+<meta property="article:modified_time" content="2018-09-18T05:09:36.000Z">
+<meta property="article:author" content="Hui He">
+<meta property="article:tag" content="aws">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aws sts assume-role">
-<meta name="twitter:description" content="aws sts assume-role is very useful for cross-account access. Imaging using dev account for build and testing and assume to prod account for deployment. To assume a role, your AWS account must be trust">
   
-    <link rel="alternate" href="/atom.xml" title="Starry Starry Night" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Twinkle Little Stars" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -41,8 +41,10 @@ ga('send', 'pageview');
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
   <div id="container">
@@ -52,12 +54,8 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Starry Starry Night</a>
+        <a href="/" id="logo">Twinkle Little Stars</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">A developer&#39;s blog</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -96,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      aws sts assume-role
+      Aws Sts Assume-Role
     </h1>
   
 
@@ -110,18 +108,20 @@ ga('send', 'pageview');
 <p>To assume a role:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example</span><br></pre></td></tr></table></figure>
 <p>The output of the command contains an access key, secret key, and session token that you can use to authenticate to AWS:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"AssumedRoleUser"</span>: &#123;</span><br><span class="line">        <span class="attr">"AssumedRoleId"</span>: <span class="string">"AROA3XFRBF535PLBIFPI4:s3-access-example"</span>,</span><br><span class="line">        <span class="attr">"Arn"</span>: <span class="string">"arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"Credentials"</span>: &#123;</span><br><span class="line">        <span class="attr">"SecretAccessKey"</span>: <span class="string">"9drTJvcXLB89EXAMPLELB8923FB892xMFI"</span>,</span><br><span class="line">        <span class="attr">"SessionToken"</span>: <span class="string">"AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU="</span>,</span><br><span class="line">        <span class="attr">"Expiration"</span>: <span class="string">"2016-03-15T00:05:07Z"</span>,</span><br><span class="line">        <span class="attr">"AccessKeyId"</span>: <span class="string">"ASIAJEXAMPLEXEG2JICEA"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;AssumedRoleUser&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;AssumedRoleId&quot;</span>: <span class="string">&quot;AROA3XFRBF535PLBIFPI4:s3-access-example&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Arn&quot;</span>: <span class="string">&quot;arn:aws:sts::123456789012:assumed-role/xaccounts3access/s3-access-example&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;Credentials&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;SecretAccessKey&quot;</span>: <span class="string">&quot;9drTJvcXLB89EXAMPLELB8923FB892xMFI&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;SessionToken&quot;</span>: <span class="string">&quot;AQoXdzELDDY//////////wEaoAK1wvxJY12r2IrDFT2IvAzTCn3zHoZ7YNtpiQLF0MqZye/qwjzP2iEXAMPLEbw/m3hsj8VBTkPORGvr9jM5sgP+w9IZWZnU+LWhmg+a5fDi2oTGUYcdg9uexQ4mtCHIHfi4citgqZTgco40Yqr4lIlo4V2b2Dyauk0eYFNebHtYlFVgAUj+7Indz3LU0aTWk1WKIjHmmMCIoTkyYp/k7kUG7moeEYKSitwQIi6Gjn+nyzM+PtoA3685ixzv0R7i5rjQi0YE0lf1oeie3bDiNHncmzosRM6SFiPzSvp6h/32xQuZsjcypmwsPSDtTPYcs0+YN/8BRi2/IcrxSpnWEXAMPLEXSDFTAQAM6Dl9zR0tXoybnlrZIwMLlMi1Kcgo5OytwU=&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Expiration&quot;</span>: <span class="string">&quot;2016-03-15T00:05:07Z&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;AccessKeyId&quot;</span>: <span class="string">&quot;ASIAJEXAMPLEXEG2JICEA&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Used in build bash scripts:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">"<span class="variable">$1</span>"</span> --role-session-name your-session-name --output text --query <span class="string">'Credentials | join(``, [`"export AWS_ACCESS_KEY_ID="`,AccessKeyId,`" AWS_SECRET_ACCESS_KEY="`,SecretAccessKey,`" AWS_SESSION_TOKEN="`,SessionToken,`\n`])'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">"<span class="variable">$ASSUME_ROLE</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assume_role</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> creds</span><br><span class="line">  $(aws sts assume-role --role-arn <span class="string">&quot;<span class="variable">$1</span>&quot;</span> --role-session-name your-session-name --output text --query <span class="string">&#x27;Credentials | join(``, [`&quot;export AWS_ACCESS_KEY_ID=&quot;`,AccessKeyId,`&quot; AWS_SECRET_ACCESS_KEY=&quot;`,SecretAccessKey,`&quot; AWS_SESSION_TOKEN=&quot;`,SessionToken,`\n`])&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$&#123;ASSUME_ROLE:-&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  assume_role <span class="string">&quot;<span class="variable">$ASSUME_ROLE</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html">https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="ck8psthb1000m7jnov7c3m30x" class="article-share-link">Share</a>
+      <a data-url="https://huihe.github.io/2018/09/18/assume-role/" data-id="ckg4ltuna000dvjno2nkp9ymd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/" rel="tag">aws</a></li></ul>
 
     </footer>
   </div>
@@ -133,7 +133,7 @@ ga('send', 'pageview');
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          lambda-15min
+          Lambda-15min
         
       </div>
     </a>
@@ -141,7 +141,7 @@ ga('send', 'pageview');
   
     <a href="/2018/08/20/sketchapp/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">sketchapp</div>
+      <div class="article-nav-title">Sketchapp</div>
     </a>
   
 </nav>
@@ -160,7 +160,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/async/" rel="tag">async</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/" rel="tag">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/" rel="tag">coroutine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/" rel="tag">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/" rel="tag">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
     </div>
   </div>
 
@@ -179,7 +179,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -192,23 +192,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2018/10/12/lambda-15min/">lambda-15min</a>
+            <a href="/2020/10/11/memory-leak-in-node-v12/">Memory Leak in Node V12</a>
           </li>
         
           <li>
-            <a href="/2018/09/18/assume-role/">aws sts assume-role</a>
+            <a href="/2018/10/12/lambda-15min/">Lambda-15min</a>
           </li>
         
           <li>
-            <a href="/2018/08/20/sketchapp/">sketchapp</a>
+            <a href="/2018/09/18/assume-role/">Aws Sts Assume-Role</a>
           </li>
         
           <li>
-            <a href="/2018/08/17/nodejs810lambda/">Use async or Promise in AWS lambda handler</a>
+            <a href="/2018/08/20/sketchapp/">Sketchapp</a>
           </li>
         
           <li>
-            <a href="/2018/08/17/cloudcraft/">A good online tool to draw your cloud architecture</a>
+            <a href="/2018/08/17/nodejs810lambda/">Use Async or Promise in AWS Lambda Handler</a>
           </li>
         
       </ul>
@@ -241,11 +241,17 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 
