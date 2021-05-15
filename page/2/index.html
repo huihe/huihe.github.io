@@ -78,6 +78,106 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-prettify-your-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/prettify-your-code/" class="article-date">
+  <time datetime="2018-05-22T12:19:33.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/22/prettify-your-code/">Use Prettier to Format Your Code, Automatically, for All Your Team</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>As a developer, I highly recommend to use <a target="_blank" rel="noopener" href="https://prettier.io/">prettier</a> in your editor. And today I’d like to go a step further, force and automate code formatting for all your team. No need to discuss the code style any more, don’t waste time on the arguments about space or tab, whether or not add a new line. And it’s much neat for code diff and review.</p>
+<p>It’s very easy, only 2 steps.</p>
+<ol>
+<li>Install <em>pretty-quick</em> and <em>husky</em>. pretty-quick runs prettier on your changed files and husky gives the hook for precommit.</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add pretty-quick husky --dev</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>add this script to your package.json:</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;:</span> &#123;</span><br><span class="line">    <span class="attr">&quot;precommit&quot;:</span> <span class="string">&quot;pretty-quick --staged&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now every time when any team member commit, the changed files will be prettified.</p>
+<p><img src="https://github.com/azz/pretty-quick/raw/master/img/precommit.gif"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2018/05/22/prettify-your-code/" data-id="ckg4ltung000kvjno10rnajhe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-migrate-ghost-to-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/migrate-ghost-to-hexo/" class="article-date">
+  <time datetime="2018-05-20T12:00:00.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/migrate-ghost-to-hexo/">Migrate My Blog From Ghost to Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h3><p>Last time I updated my blog was about 10 months ago. My blog used to be hosted on my own linux vps. I setup the machine, nginx, nodejs, ghost and the blog. It was fun to put all those things together and enjoy my final product, my blog. But I’m not a real blogger. You see I haven’t update it for a long time. And I still have to pay for the vps, domain, and maintain the ‘system’, not the blog itself.</p>
+<p>Github pages is free to host static pages, also coming with a free domain name. And <a target="_blank" rel="noopener" href="https://hexo.io/">hexo</a> is easy to let you build your static blog. BTW, it’s on node.js :) It actually only spent me a short time to migrate my blog from my own vps to github.</p>
+<h3 id="How"><a href="#How" class="headerlink" title="How"></a>How</h3><ul>
+<li>backup existing ghost data to json file</li>
+<li>install hexo local</li>
+<li>import ghost data using hexo-migrator-ghost</li>
+<li>test on local</li>
+<li>generate static pages</li>
+<li>deploy blog to github.io</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/2018/05/20/migrate-ghost-to-hexo/" data-id="ckg4ltunf000ivjnodiy21myo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Issue-in-npm-v5-4-0-which-doesn-t-work-with-flow-check-Error-spawn-EACCES" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/issue-in-npm-v5-4-0-which-doesnt-work-with-flow-check-error-spawn-eacces" class="article-date">
@@ -428,118 +528,11 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Customise-aws-API-gateway-name-in-serverless-framework" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/customize-aws-api-gateway-name-in-serverless-framework" class="article-date">
-  <time datetime="2017-02-21T14:00:16.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/customize-aws-api-gateway-name-in-serverless-framework">Customise Aws API Gateway Name in Serverless Framework</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="serverless-framework"><a href="#serverless-framework" class="headerlink" title="serverless framework"></a>serverless framework</h3><p>When using serverless framework to deploy aws api gateway, by default the api name will be stage-servicename, like <code>sit-test-service</code> or <code>dev-test-service</code>.</p>
-<p>If you want to customise the api name, you can do it through resources configuration.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">serverless.yml</span><br><span class="line"></span><br><span class="line">resources:</span><br><span class="line">  Resources:</span><br><span class="line">	ApiGatewayRestApi:</span><br><span class="line">	  Type: AWS::ApiGateway::RestApi</span><br><span class="line">	  Properties:</span><br><span class="line">	    Name: &quot;yourServiceName&quot;</span><br></pre></td></tr></table></figure>
-
-<p>I use a seperate resource file, it looks like this</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">serverless.yml</span><br><span class="line"></span><br><span class="line">resources:</span><br><span class="line">   Resources: $&#123;file(resources.yml)&#125;	</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">resources.yml</span><br><span class="line"></span><br><span class="line">ApiGatewayRestApi:</span><br><span class="line">  Type: AWS::ApiGateway::RestApi</span><br><span class="line">  Properties:</span><br><span class="line">    Name: &quot;yourServiceName&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>When you deploy again after adding custom api name, serverless will call <code>aws cloudformation update-stack</code> based on the cloudformation json template. It won’t create a new api, just rename it by updating the existing api. The existing api id won’t change, so the existing cloudfront or custom dns won’t be affected.</li>
-</ul>
-<h3 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h3><p>if you want to do this via command line,</p>
-<ul>
-<li>first list APIS and IDs under your account:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws apigateway get-rest-apis</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Use the Id to update name of API</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws apigateway update-rest-api --rest-api-id IDOfTheAPIThatNeedsTobeUpdated --patch-operations op&#x3D;replace,path&#x3D;&#x2F;name,value&#x3D;NewName</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/customize-aws-api-gateway-name-in-serverless-framework" data-id="ckg4ltumz0001vjno7pmkgb5c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/" rel="tag">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Piper-A-Story-of-Growing-Up" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/piper" class="article-date">
-  <time datetime="2017-01-29T18:43:34.000Z" itemprop="datePublished">2017-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/piper">Piper - a Story of Growing Up</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/A-uzJB9Bc9U" frameborder="0" allowfullscreen></iframe>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/piper" data-id="ckg4ltun30006vjnofoju7idq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -563,7 +556,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
+      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
     </div>
   </div>
 
@@ -572,7 +565,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -585,6 +578,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2021/03/16/new-toy/">New-Toy</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/dalabengba/">Dalabengba</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/11/memory-leak-in-node-v12/">Memory Leak in Node V12</a>
           </li>
         
@@ -594,14 +595,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/09/18/assume-role/">Aws Sts Assume-Role</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/20/sketchapp/">Sketchapp</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/17/nodejs810lambda/">Use Async or Promise in AWS Lambda Handler</a>
           </li>
         
       </ul>
@@ -616,7 +609,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Hui He<br>
+      &copy; 2021 Hui He<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

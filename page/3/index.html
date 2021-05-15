@@ -78,6 +78,113 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Customise-aws-API-gateway-name-in-serverless-framework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/customize-aws-api-gateway-name-in-serverless-framework" class="article-date">
+  <time datetime="2017-02-21T14:00:16.000Z" itemprop="datePublished">2017-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/customize-aws-api-gateway-name-in-serverless-framework">Customise Aws API Gateway Name in Serverless Framework</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="serverless-framework"><a href="#serverless-framework" class="headerlink" title="serverless framework"></a>serverless framework</h3><p>When using serverless framework to deploy aws api gateway, by default the api name will be stage-servicename, like <code>sit-test-service</code> or <code>dev-test-service</code>.</p>
+<p>If you want to customise the api name, you can do it through resources configuration.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">serverless.yml</span><br><span class="line"></span><br><span class="line">resources:</span><br><span class="line">  Resources:</span><br><span class="line">	ApiGatewayRestApi:</span><br><span class="line">	  Type: AWS::ApiGateway::RestApi</span><br><span class="line">	  Properties:</span><br><span class="line">	    Name: &quot;yourServiceName&quot;</span><br></pre></td></tr></table></figure>
+
+<p>I use a seperate resource file, it looks like this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">serverless.yml</span><br><span class="line"></span><br><span class="line">resources:</span><br><span class="line">   Resources: $&#123;file(resources.yml)&#125;	</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">resources.yml</span><br><span class="line"></span><br><span class="line">ApiGatewayRestApi:</span><br><span class="line">  Type: AWS::ApiGateway::RestApi</span><br><span class="line">  Properties:</span><br><span class="line">    Name: &quot;yourServiceName&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>When you deploy again after adding custom api name, serverless will call <code>aws cloudformation update-stack</code> based on the cloudformation json template. It won’t create a new api, just rename it by updating the existing api. The existing api id won’t change, so the existing cloudfront or custom dns won’t be affected.</li>
+</ul>
+<h3 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h3><p>if you want to do this via command line,</p>
+<ul>
+<li>first list APIS and IDs under your account:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws apigateway get-rest-apis</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Use the Id to update name of API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws apigateway update-rest-api --rest-api-id IDOfTheAPIThatNeedsTobeUpdated --patch-operations op&#x3D;replace,path&#x3D;&#x2F;name,value&#x3D;NewName</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/customize-aws-api-gateway-name-in-serverless-framework" data-id="ckg4ltumz0001vjno7pmkgb5c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/" rel="tag">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Piper-A-Story-of-Growing-Up" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/piper" class="article-date">
+  <time datetime="2017-01-29T18:43:34.000Z" itemprop="datePublished">2017-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/piper">Piper - a Story of Growing Up</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/A-uzJB9Bc9U" frameborder="0" allowfullscreen></iframe>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huihe.github.io/piper" data-id="ckg4ltun30006vjnofoju7idq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/xcrun-error-invalid-active-developer-path-after-upgrading-to-mac-os-sierra" class="article-date">
@@ -429,94 +536,11 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-曾经的你" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/ceng-jing-de-ni" class="article-date">
-  <time datetime="2016-11-12T01:50:34.000Z" itemprop="datePublished">2016-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ceng-jing-de-ni">曾经的你</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em>曾梦想仗剑走天涯，看一看世界的繁华，年少的心总有些轻狂，如今已四海为家</em></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bfBda3Y2-qo" frameborder="0" allowfullscreen></iframe>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/ceng-jing-de-ni" data-id="ckg4ltunk000rvjno0z703poc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-async-await" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/async-await" class="article-date">
-  <time datetime="2016-11-12T01:17:48.000Z" itemprop="datePublished">2016-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/async-await">Async Await</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>using async and await in javascript.<br>es7, babel or asyncawait</p>
-<p><strong>reference:</strong></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/yortus/asyncawait">https://github.com/yortus/asyncawait</a><br><a target="_blank" rel="noopener" href="https://promisesaplus.com/">https://promisesaplus.com/</a><br><a target="_blank" rel="noopener" href="https://github.com/vitaly-t/pg-promise">https://github.com/vitaly-t/pg-promise</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huihe.github.io/async-await" data-id="ckg4ltunc000evjno9p5t7rn1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/async/" rel="tag">async</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -540,7 +564,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
+      <a href="/tags/async/" style="font-size: 15px;">async</a> <a href="/tags/aws/" style="font-size: 15px;">aws</a> <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/code/" style="font-size: 20px;">code</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/lambda/" style="font-size: 12.5px;">lambda</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/music/" style="font-size: 17.5px;">music</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a>
     </div>
   </div>
 
@@ -549,7 +573,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -562,6 +586,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2021/03/16/new-toy/">New-Toy</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/dalabengba/">Dalabengba</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/11/memory-leak-in-node-v12/">Memory Leak in Node V12</a>
           </li>
         
@@ -571,14 +603,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/09/18/assume-role/">Aws Sts Assume-Role</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/20/sketchapp/">Sketchapp</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/17/nodejs810lambda/">Use Async or Promise in AWS Lambda Handler</a>
           </li>
         
       </ul>
@@ -593,7 +617,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Hui He<br>
+      &copy; 2021 Hui He<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
